@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Akshar Sweets & Farsan – Pure Desi Ghee & Fresh Namkeen</title>
+  <!-- Google Fonts: Bricolage Grotesque & Plus Jakarta Sans / Spline Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Spline+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="app-body">
+
+  <!-- ============================================================
+       APPLICATION ROOT WRAPPER
+       Mobile/Tablet: Fluid single long rectangle, bottom nav
+       Desktop/PC: Elegant sidebar + wide desktop-style layout
+       ============================================================ -->
+  <div id="app-root" class="app-root-layout">
+
+    <!-- DESKTOP SIDEBAR / MOBILE BOTTOM NAVIGATION -->
+    <nav id="app-nav-bar" class="app-navigation-bar" aria-label="Main Navigation">
+      <!-- Desktop Brand Header (Hidden on Mobile) -->
+      <div class="sidebar-brand-box">
+        <div class="sidebar-logo-icon">AS</div>
+        <div class="sidebar-brand-info">
+          <span class="sidebar-brand-name">AKSHAR SWEETS</span>
+          <span class="sidebar-brand-sub">શુદ્ધ ઘી &bull; Authentic Taste</span>
+        </div>
+      </div>
+
+      <!-- Nav Items -->
+      <div class="nav-links-wrap">
+        <button type="button" class="nav-item active" data-tab="android-tab-home" id="nav-btn-home">
+          <i class="fa-solid fa-store"></i>
+          <span>Home</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="android-tab-products" id="nav-btn-products">
+          <i class="fa-solid fa-shapes"></i>
+          <span>Products</span>
+        </button>
+        <button type="button" class="nav-item center-search" data-tab="android-tab-search" id="nav-btn-search">
+          <div class="nav-search-circle">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <span>Search</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="android-tab-orders" id="nav-btn-orders">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span>My Orders</span>
+        </button>
+        <button type="button" class="nav-item cart-nav-btn" id="app-cart-trigger">
+          <div class="cart-icon-wrap">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="nav-cart-badge" id="android-cart-badge">0</span>
+          </div>
+          <span>Cart</span>
+        </button>
+      </div>
+
+      <!-- Desktop Sidebar Bottom Card (Hidden on Mobile) -->
+      <div class="sidebar-footer-card">
+        <button type="button" class="sidebar-wholesale-btn" id="sidebar-wholesale-trigger">
+          <i class="fa-solid fa-truck-ramp-box"></i>
+          <span>Wholesale Bulk RFQ</span>
+        </button>
+        <div class="sidebar-contact-info">
+          <i class="fa-solid fa-phone"></i>
+          <div>
+            <small>Need Help? Call Us</small>
+            <strong>+91 79 2685 4100</strong>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN INTERACTIVE APP CONTENT CANVAS -->
+    <div class="app-main-viewport" id="app-scroll-canvas">
+
+      <!-- TOPBAR OF APPLICATION (Fixed at top: 0) -->
+      <header id="app-fixed-topbar" class="app-fixed-topbar">
+        <div class="topbar-inner-container">
+          <div class="store-badge-row">
+            <!-- Brand Logo / Mark -->
+            <div class="store-logo-mark" id="topbar-brand-home">
+              <div class="logo-box">
+                <span class="logo-text">AKSHAR</span>
+                <span class="logo-sub">SWEETS &amp; FARSAN</span>
+              </div>
+              <span class="veg-dot-icon" title="100% Pure Vegetarian">
+                <span class="veg-green-circle"></span>
+              </span>
+            </div>
+
+            <!-- Delivery Location Indicator -->
+            <div class="store-location-selector" id="app-location-btn">
+              <div class="loc-label">DELIVERING TO</div>
+              <div class="loc-address">
+                <span id="android-current-address">Ahmedabad 380015</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+
+            <!-- 30m Express delivery tag -->
+            <div class="express-badge">
+              <i class="fa-solid fa-bolt"></i>
+              <span>30m Express</span>
+            </div>
+
+            <!-- Header Action Icons -->
+            <div class="android-header-actions">
+              <!-- Wholesale Quick Button (on tablets/desktop) -->
+              <button type="button" class="btn-top-wholesale" id="top-wholesale-btn" title="Wholesale Bulk Pricing">
+                <i class="fa-solid fa-boxes-packing"></i>
+                <span class="hide-mobile">Wholesale</span>
+              </button>
+              <button type="button" class="icon-round-btn" id="app-notif-btn" title="Offers & Alerts">
+                <i class="fa-regular fa-bell"></i>
+                <span class="notif-dot"></span>
+              </button>
+              <button type="button" class="avatar-round-btn" id="app-profile-btn" title="My Profile">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                  alt="Customer Profile" class="user-avatar-img">
+              </button>
+            </div>
+          </div>
+
+          <!-- Announcement Ribbon Banner -->
+          <div class="android-announcement-ribbon">
+            <div class="ribbon-content">
+              <div class="ribbon-text">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                <span>Festive Deal: Flat 20% off on Kaju Katli &amp; Gift Hampers</span>
+              </div>
+              <span class="code-badge">FESTIVE20</span>
+            </div>
+          </div>
+
+          <!-- Quick Search Bar -->
+          <div class="android-search-box">
+            <i class="fa-solid fa-magnifying-glass search-lens"></i>
+            <input type="text" id="android-search-input"
+              placeholder="Search Motichoor, Ratlami Sev, Kaju Katli, Fafda..." autocomplete="off">
+            <button type="button" class="search-clear-btn hidden" id="android-search-clear"><i
+                class="fa-solid fa-xmark"></i></button>
+            <button type="button" class="search-mic-btn" id="android-search-mic"><i
+                class="fa-solid fa-microphone"></i></button>
+          </div>
+
+          <!-- Quick Search Suggested Tags (Contained horizontal wrap) -->
+          <div class="android-quick-tags" id="android-search-tags">
+            <span class="search-tag" data-query="Bhavnagari Gathiya">Bhavnagari Gathiya ↗</span>
+            <span class="search-tag" data-query="Tikha Gathiya">Tikha Gathiya ↗</span>
+            <span class="search-tag" data-query="Kaju Katli">Kaju Katli ↗</span>
+            <span class="search-tag" data-query="Fafda">Fafda Combo ↗</span>
+            <span class="search-tag" data-query="Kesar Peda">Kesar Peda ↗</span>
+          </div>
+        </div>
+
+        <!-- Sticky Floating Top Cart Strip (Active when cart has items) -->
+        <div class="android-floating-cart-bar hidden" id="android-floating-cart">
+          <div class="cart-bar-info">
+            <span class="cart-pill-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+            <div>
+              <strong id="android-cart-pill-count">2 Items In Cart</strong>
+              <div class="cart-pill-sub" id="android-cart-pill-total">₹585 plus taxes</div>
+            </div>
+          </div>
+          <button type="button" class="cart-bar-view-btn" id="btn-open-cart-floating">
+            <span>View Cart</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- SCROLLABLE TAB PAGES CONTAINER -->
+      <main class="app-tab-pages-wrapper">
+
+        <!-- TAB 1: HOME PAGE -->
+        <div class="android-tab-view active" id="android-tab-home">
+          <!-- "Explore Cravings" Section -->
+          <section class="android-section explore-cravings">
+            <div class="section-title-row">
+              <h3>Explore Cravings <span class="accent-dot">•</span></h3>
+              <button type="button" class="link-btn" id="android-see-all-cats">All Categories &gt;</button>
+            </div>
+            <div class="cravings-scroll-row" id="android-cravings-list">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </section>
+
+          <!-- Hero Promo Card: Grand Festive Mithai Box -->
+          <section class="android-section hero-promo-section">
+            <div class="festive-hero-card" id="hero-promo-card">
+              <div class="hero-card-badge">
+                <i class="fa-solid fa-circle-check"></i> GIR COW DESI GHEE
+              </div>
+              <div class="hero-card-body">
+                <div class="hero-card-left">
+                  <h2 class="hero-title">Grand Festive Mithai Box</h2>
+                  <p class="hero-desc">16 artisanal bites crafted fresh at dawn. Pure silver vark, sealed in stays-crisp
+                    festive tin.</p>
+                  <div class="hero-price-tag">
+                    <span class="hero-special-lbl">FESTIVAL SPECIAL</span>
+                    <div class="hero-price-row">
+                      <span class="price-val">₹649</span>
+                      <span class="price-old">₹799</span>
+                    </div>
+                  </div>
+                  <button type="button" class="hero-cta-btn" id="btn-hero-order">
+                    <i class="fa-solid fa-bag-shopping"></i> Order Fresh
+                  </button>
+                </div>
+                <div class="hero-card-right">
+                  <img
+                    src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=480&q=80"
+                    alt="Grand Festive Mithai Box" class="hero-product-img">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- "Today's Fresh Batch" Section -->
+          <section class="android-section fresh-batch-section">
+            <div class="section-title-row">
+              <div>
+                <h3 class="flex-align">
+                  Today's Fresh Batch
+                  <span class="batch-timer-badge">
+                    <i class="fa-regular fa-clock"></i> <span id="android-countdown-timer">04H : 22M LEFT</span>
+                  </span>
+                </h3>
+                <p class="section-sub">Prepared right in Ahmedabad flagship kitchen (Groundnut Oil &amp; Gir Cow Ghee)
+                </p>
+              </div>
+              <button type="button" class="link-btn" id="android-view-all-fresh">View All</button>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div class="product-cards-grid" id="android-fresh-batch-grid">
+              <!-- Dynamically populated -->
+            </div>
+          </section>
+
+          <!-- Bulk Festive Gifting Hamper Banner -->
+          <section class="android-section bulk-gifting-banner">
+            <div class="hamper-promo-box">
+              <div class="hamper-icon-circle">
+                <i class="fa-solid fa-gifts"></i>
+              </div>
+              <div class="hamper-content">
+                <span class="hamper-badge">FESTIVE GIFTING <strong>NEW</strong></span>
+                <h4>Looking for bulk festive gifting?</h4>
+                <p>Build custom corporate boxes with silver vark mithai, fresh namkeen &amp; personalized greeting
+                  seals.</p>
+                <button type="button" class="hamper-action-btn" id="android-hamper-btn">
+                  <span>Try Hamper Builder &amp; Wholesale</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!-- 100% Fresh Daily Guarantee Strip -->
+          <section class="android-section footer-guarantee">
+            <div class="guarantee-box">
+              <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+              <div>
+                <strong>100% Fresh Daily Batches</strong>
+                <p>Packaged in sealed food-grade stay-crisp pouches directly from Ahmedabad workshop.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- TAB 2: PRODUCTS CATALOGUE -->
+        <div class="android-tab-view hidden" id="android-tab-products">
+          <div class="catalog-header-bar">
+            <!-- Filter Pills -->
+            <div class="android-filter-bar">
+              <button type="button" class="filter-pill active" data-filter="all">All (<span
+                  id="android-product-count">35</span>)</button>
+              <button type="button" class="filter-pill" data-filter="in-stock">In Stock ⚡</button>
+              <button type="button" class="filter-pill" data-filter="under-250">Under ₹250</button>
+              <button type="button" class="filter-pill" data-filter="pure-ghee">Pure Ghee</button>
+              <button type="button" class="filter-pill" data-filter="wholesale">Wholesale Bulk 📦</button>
+            </div>
+
+            <!-- Category Sub-tabs -->
+            <div class="android-subcat-tabs" id="android-cat-filter-tabs">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+
+          <!-- Product Listing Grid -->
+          <div class="product-cards-grid catalog-grid" id="android-catalogue-grid">
+            <!-- Dynamically populated with weight variant selectors (250g, 500g, 1kg) -->
+          </div>
+        </div>
+
+        <!-- TAB 3: SEARCH & DISCOVERY -->
+        <div class="android-tab-view hidden" id="android-tab-search">
+          <div class="search-view-container">
+            <div class="recent-searches-box">
+              <div class="section-title-row">
+                <h4><i class="fa-solid fa-clock-rotate-left"></i> Recent Searches</h4>
+                <button type="button" class="link-btn small" id="clear-recent-searches">CLEAR ALL</button>
+              </div>
+              <div class="recent-chips-wrap" id="recent-searches-list">
+                <span class="recent-tag" data-query="Kesar Peda 500g">Kesar Peda 500g</span>
+                <span class="recent-tag" data-query="Bhavnagari Gathiya">Bhavnagari Gathiya</span>
+                <span class="recent-tag" data-query="Sugar Free Anjeer Barfi">Sugar Free Anjeer Barfi</span>
+                <span class="recent-tag" data-query="Diwali Mithai Hamper">Diwali Mithai Hamper</span>
+              </div>
+            </div>
+
+            <div class="search-results-heading">
+              <span id="search-query-label">All Specialities</span>
+              <span class="results-count" id="search-results-count">Showing 35 items</span>
+            </div>
+            <div class="product-cards-grid" id="android-search-results-grid">
+              <!-- Search items injected here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: MY ORDERS & TRACKING -->
+        <div class="android-tab-view hidden" id="android-tab-orders">
+          <div class="orders-view-container">
+            <div class="view-header-title">
+              <h3>My Orders &amp; Live Tracking</h3>
+              <p class="section-sub">Track active dispatches &amp; view tax receipts</p>
+            </div>
+
+            <!-- Active Order Card -->
+            <div id="android-active-order-card" class="active-order-tracking-card hidden">
+              <!-- Injected dynamically -->
+            </div>
+
+            <!-- Past Order History List -->
+            <div class="order-history-list" id="android-order-history-list">
+              <!-- Past orders with 1-click Reorder and Receipt buttons -->
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODALS & DRAWERS (Cart, Checkout, Live Tracking, Invoice, RFQ)
+       ============================================================ -->
+
+  <!-- 1. CART & CHECKOUT DRAWER -->
+  <div id="cart-drawer-modal" class="modal-backdrop hidden">
+    <div class="cart-drawer-panel">
+      <div class="drawer-header flex-between">
+        <div class="drawer-title-group">
+          <h3><i class="fa-solid fa-basket-shopping"></i> My Cart</h3>
+          <span class="purity-badge"><i class="fa-solid fa-certificate"></i> 100% Pure Ghee Guarantee</span>
+        </div>
+        <button type="button" class="drawer-close-btn" id="btn-close-cart">&times;</button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- Delivery Address Bar -->
+        <div class="cart-address-box flex-between">
+          <div class="addr-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="addr-details">
+            <small>DELIVERING TO <strong id="cart-addr-label">HOME</strong></small>
+            <p id="cart-full-address">B-402, Shivalik Heights, Bodakdev, Ahmedabad, 380054 &bull; 30-min express</p>
+          </div>
+          <button type="button" class="addr-change-btn" id="btn-change-address">Change</button>
+        </div>
+
+        <!-- Free Delivery Progress Bar -->
+        <div class="free-delivery-tracker">
+          <div class="tracker-info flex-between">
+            <span id="free-delivery-text"><i class="fa-solid fa-truck"></i> Add ₹156 more for <strong>FREE Express
+                Delivery</strong></span>
+            <small id="free-delivery-calc">₹844 / ₹1,000</small>
+          </div>
+          <div class="progress-bar-rail">
+            <div class="progress-bar-fill" id="free-delivery-bar" style="width: 84%;"></div>
+          </div>
+        </div>
+
+        <!-- Delivery vs Pickup Option -->
+        <div class="fulfillment-selector">
+          <label class="fulfill-option active">
+            <input type="radio" name="fulfillment" value="delivery" checked>
+            <span><i class="fa-solid fa-motorcycle"></i> Express Delivery</span>
+          </label>
+          <label class="fulfill-option">
+            <input type="radio" name="fulfillment" value="pickup">
+            <span><i class="fa-solid fa-store"></i> Store Pickup</span>
+          </label>
+        </div>
+
+        <!-- Cart Items List -->
+        <div class="cart-items-heading">Sweet &amp; Farsan Selection <small>Made fresh this morning</small></div>
+        <div class="cart-items-container" id="cart-items-list">
+          <!-- Dynamically populated cart items -->
+        </div>
+
+        <!-- Frequently Bought Together Add-ons -->
+        <div class="addon-recommendations">
+          <div class="addon-title"><i class="fa-solid fa-thumbs-up"></i> Frequently Bought Together</div>
+          <div class="addon-chips-row" id="cart-addons-row">
+            <div class="addon-card" data-addon-name="Fried Chillies & Papaya Sambharo" data-addon-price="30">
+              <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=120&q=80"
+                alt="Sambharo">
+              <div class="addon-info">
+                <strong>Fried Chillies &amp; Sambharo</strong>
+                <span>100g spicy crunch &bull; ₹30</span>
+              </div>
+              <button type="button" class="addon-add-btn">+ Add</button>
+            </div>
+            <div class="addon-card" data-addon-name="Silver Foil Festive Gift Packaging" data-addon-price="49">
+              <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=120&q=80"
+                alt="Packaging">
+              <div class="addon-info">
+                <strong>Silver Festive Wrapping</strong>
+                <span>Golden seal &bull; ₹49</span>
+              </div>
+              <button type="button" class="addon-add-btn">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offers & Coupon Code Section -->
+        <div class="coupon-section-box">
+          <div class="coupon-title"><i class="fa-solid fa-tag"></i> Offers &amp; Coupon Codes</div>
+          <div class="coupon-input-group">
+            <input type="text" id="coupon-input" placeholder="Enter coupon (e.g. FESTIVE20)" uppercase>
+            <button type="button" id="btn-apply-coupon">Apply</button>
+          </div>
+          <div id="coupon-applied-message" class="coupon-applied-pill hidden">
+            <span><i class="fa-solid fa-circle-check"></i> <strong id="applied-coupon-code">FESTIVE20</strong> applied:
+              Extra ₹<span id="coupon-discount-amt">180</span> off</span>
+            <button type="button" id="btn-remove-coupon">&times;</button>
+          </div>
+        </div>
+
+        <!-- Delivery Instructions Preference -->
+        <div class="delivery-instructions-box">
+          <label><i class="fa-regular fa-comment-dots"></i> Delivery Preference</label>
+          <div class="instruction-pills">
+            <button type="button" class="inst-pill" data-val="Leave with guard">Leave with guard</button>
+            <button type="button" class="inst-pill active" data-val="Avoid doorbell">Avoid doorbell</button>
+            <button type="button" class="inst-pill" data-val="Hand over to me">Hand over to me</button>
+            <button type="button" class="inst-pill" data-val="Call before arrival">Call before arrival</button>
+          </div>
+        </div>
+
+        <!-- Bill Summary -->
+        <div class="bill-summary-card">
+          <h4>Bill Summary <small>Inclusive of all taxes</small></h4>
+          <div class="bill-row">
+            <span>Items Total (MRP)</span>
+            <span id="bill-mrp">₹939</span>
+          </div>
+          <div class="bill-row discount">
+            <span>Product Discount</span>
+            <span id="bill-discount">-₹95</span>
+          </div>
+          <div class="bill-row discount" id="bill-coupon-row">
+            <span>Coupon Discount (<span id="bill-coupon-name">FESTIVE20</span>)</span>
+            <span id="bill-coupon-amt">-₹180</span>
+          </div>
+          <div class="bill-row">
+            <span>Delivery Partner Fee</span>
+            <span id="bill-delivery-fee">FREE</span>
+          </div>
+          <div class="bill-row">
+            <span>Stay-Crisp Food Grade Packaging</span>
+            <span>₹15</span>
+          </div>
+          <div class="bill-divider"></div>
+          <div class="bill-row total">
+            <strong>Grand Total</strong>
+            <strong class="total-amt" id="bill-grand-total">₹719</strong>
+          </div>
+          <div class="savings-banner" id="bill-savings-banner">
+            <i class="fa-solid fa-sparkles"></i> Yay! You saved <strong id="bill-saved-amount">₹275</strong> on this
+            order
+          </div>
+        </div>
+
+        <div class="trust-badges-strip">
+          <div><i class="fa-solid fa-award"></i> 100% Desi Ghee</div>
+          <div><i class="fa-solid fa-shield-halved"></i> Tamper-evident Seal</div>
+          <div><i class="fa-solid fa-face-smile"></i> Taste Guaranteed</div>
+        </div>
+      </div>
+
+      <!-- Drawer Sticky Checkout Footer -->
+      <div class="drawer-footer flex-between">
+        <div class="footer-total-box">
+          <strong class="grand-price" id="drawer-total-price">₹719</strong>
+          <small class="view-bill-link">Inclusive of GST</small>
+        </div>
+        <button type="button" class="btn-checkout-primary" id="btn-proceed-checkout">
+          <span>Proceed to Pay</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SIMULATED OTP & PAYMENT MODAL -->
+  <div id="checkout-otp-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog checkout-modal-card">
+      <div class="modal-header flex-between">
+        <div class="flex-align gap-2">
+          <div class="demo-shield-icon"><i class="fa-solid fa-shield-cat"></i></div>
+          <div>
+            <h4>Verify &amp; Confirm Order</h4>
+            <span class="badge-tag">Secure Checkout</span>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-checkout-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="demo-notice-alert">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Simulated OTP verification for demo. Auto-fill is enabled.</span>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Mobile Number for Order &amp; Delivery Updates</label>
+          <div class="phone-input-group">
+            <span class="country-prefix">+91</span>
+            <input type="text" id="checkout-phone-input" value="98250 84721" class="form-control">
+          </div>
+        </div>
+
+        <div class="otp-box-wrap">
+          <div class="flex-between">
+            <label style="font-size:12px; font-weight:700;">Enter OTP</label>
+            <button type="button" class="autofill-otp-btn" id="btn-autofill-otp">Auto-Fill OTP (4829)</button>
+          </div>
+          <div class="otp-inputs-row">
+            <input type="text" maxlength="1" class="otp-digit" value="4">
+            <input type="text" maxlength="1" class="otp-digit" value="8">
+            <input type="text" maxlength="1" class="otp-digit" value="2">
+            <input type="text" maxlength="1" class="otp-digit" value="9">
+          </div>
+        </div>
+
+        <!-- Payment Method Selection -->
+        <div class="payment-method-selector mb-3">
+          <label class="section-sub-label">Select Payment Method</label>
+          <div class="pay-options-list">
+            <label class="pay-radio active">
+              <input type="radio" name="pay-method" value="UPI" checked>
+              <span><i class="fa-brands fa-google-pay"></i> Instant UPI (GPay / PhonePe / Paytm)</span>
+            </label>
+            <label class="pay-radio">
+              <input type="radio" name="pay-method" value="COD">
+              <span><i class="fa-solid fa-money-bill-wave"></i> Cash on Delivery (COD)</span>
+            </label>
+            <label class="pay-radio">
+              <input type="radio" name="pay-method" value="Card">
+              <span><i class="fa-solid fa-credit-card"></i> Debit / Credit Card</span>
+            </label>
+            <label class="pay-radio">
+              <input type="radio" name="pay-method" value="Wholesale 15-Day Credit">
+              <span><i class="fa-solid fa-file-invoice-dollar"></i> Wholesale 15-Day Net Credit</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="checkout-order-preview">
+          <div class="flex-between">
+            <span>Final Payable Amount:</span>
+            <strong class="payable-val" id="checkout-payable-val">₹719</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-primary-block" id="btn-confirm-place-order">
+          <i class="fa-solid fa-lock"></i> Authorize &amp; Place Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. REAL-TIME ORDER TRACKING MODAL -->
+  <div id="order-tracking-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog tracking-modal-card">
+      <div class="modal-header flex-between">
+        <div>
+          <h4><i class="fa-solid fa-route"></i> Live Order Tracking</h4>
+          <span class="tracking-order-id" id="track-modal-order-id">Order #AKS-2026-107</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-tracking-modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Live status banner -->
+        <div class="tracking-status-banner" id="track-banner-color">
+          <div class="status-main-label">
+            <small>CURRENT STATUS</small>
+            <h3 id="track-status-heading">Preparing Fresh Batch</h3>
+          </div>
+          <div class="eta-pill">
+            <i class="fa-solid fa-clock"></i>
+            <span id="track-eta-text">Est. Delivery in 25 mins</span>
+          </div>
+        </div>
+
+        <!-- 5-Step Order Lifecycle Stepper -->
+        <div class="lifecycle-stepper">
+          <div class="step-point" id="step-node-placed">
+            <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="step-label">Order Placed</div>
+            <small class="step-time" id="time-node-placed">Just now</small>
+          </div>
+          <div class="step-line" id="line-1"></div>
+          <div class="step-point" id="step-node-accepted">
+            <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="step-label">Accepted</div>
+            <small class="step-time" id="time-node-accepted">Bodakdev Store</small>
+          </div>
+          <div class="step-line" id="line-2"></div>
+          <div class="step-point" id="step-node-preparing">
+            <div class="step-circle"><i class="fa-solid fa-fire-burner"></i></div>
+            <div class="step-label">Preparing</div>
+            <small class="step-time" id="time-node-preparing">Kitchen Cooking</small>
+          </div>
+          <div class="step-line" id="line-3"></div>
+          <div class="step-point" id="step-node-dispatch">
+            <div class="step-circle"><i class="fa-solid fa-motorcycle"></i></div>
+            <div class="step-label">Out for Delivery</div>
+            <small class="step-time" id="time-node-dispatch">Delivery Partner</small>
+          </div>
+          <div class="step-line" id="line-4"></div>
+          <div class="step-point" id="step-node-completed">
+            <div class="step-circle"><i class="fa-solid fa-box-open"></i></div>
+            <div class="step-label">Completed</div>
+            <small class="step-time" id="time-node-completed">Delivered</small>
+          </div>
+        </div>
+
+        <!-- Order Items Summary in Tracking -->
+        <div class="tracking-items-box">
+          <h5>Order Items (<span id="track-items-count">3</span> items)</h5>
+          <div class="tracking-items-list" id="track-items-container">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <div class="tracking-delivery-dest">
+          <i class="fa-solid fa-location-pin"></i>
+          <div>
+            <strong>Delivery Address</strong>
+            <p id="track-destination-addr">B-402, Shivalik Heights, Bodakdev, Ahmedabad 380054</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer flex-between">
+        <button type="button" class="btn-flow-action secondary" id="btn-track-view-bill">
+          <i class="fa-solid fa-file-invoice"></i> View Tax Invoice / Receipt
+        </button>
+        <button type="button" class="btn-primary-sm" id="btn-track-done">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. WHOLESALE & RFQ MODAL -->
+  <div id="wholesale-rfq-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog wholesale-modal-card">
+      <div class="modal-header flex-between">
+        <div>
+          <h4><i class="fa-solid fa-truck-ramp-box"></i> Wholesale Bulk Inquiries (B2B)</h4>
+          <span class="badge-tag">Catering &amp; Banquets</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-wholesale-modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="form-submit-rfq">
+          <div class="form-row flex-gap mb-3">
+            <div class="form-group flex-1">
+              <label>Business / Caterer Name *</label>
+              <input type="text" class="form-control" id="rfq-company" value="Swagat Caterers &amp; Events" required>
+            </div>
+            <div class="form-group flex-1">
+              <label>Contact Phone *</label>
+              <input type="text" class="form-control" id="rfq-contact" value="+91 98251 33445" required>
+            </div>
+          </div>
+
+          <div class="form-row flex-gap mb-3">
+            <div class="form-group flex-1">
+              <label>Bulk Item Required *</label>
+              <select class="form-control" id="rfq-product">
+                <option value="Special Bhavnagari Gathiya">Special Bhavnagari Gathiya (Bulk 10kg tins)</option>
+                <option value="Royal Kaju Katli (Goan Cashew)">Royal Kaju Katli (Bulk 5kg tins)</option>
+                <option value="Spicy Ratlami Sev">Spicy Ratlami Sev (Bulk 15kg cartons)</option>
+                <option value="Mohanthal Desi Ghee">Mohanthal Desi Ghee (Bulk 10kg)</option>
+                <option value="Grand Festive Mithai Box (16 Pcs)">Grand Festive Mithai Box (Bulk)</option>
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label>Quantity (kg / boxes) *</label>
+              <input type="number" class="form-control" id="rfq-qty" value="50" min="5" required>
+            </div>
+          </div>
+
+          <div class="form-row flex-gap mb-3">
+            <div class="form-group flex-1">
+              <label>Delivery / Event Date *</label>
+              <input type="date" class="form-control" id="rfq-date" value="2026-11-20" required>
+            </div>
+            <div class="form-group flex-1">
+              <label>Delivery Location (Ahmedabad / Gujarat)</label>
+              <input type="text" class="form-control" id="rfq-location" value="Rajpath Club Banquets, SG Highway">
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Special Instructions / Custom Packaging</label>
+            <textarea class="form-control" id="rfq-notes" rows="2"
+              placeholder="Custom silver vark sealing, specific oil preferences, wedding sticker logo..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary-block">
+            <i class="fa-solid fa-paper-plane"></i> Submit Quotation Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. GST TAX INVOICE & RECEIPT MODAL -->
+  <div id="invoice-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog invoice-modal-card">
+      <div class="modal-header flex-between no-print">
+        <h4><i class="fa-solid fa-file-invoice"></i> Tax Invoice &amp; Kitchen Slip</h4>
+        <div class="flex-align gap-2">
+          <button type="button" class="btn-secondary-sm" id="btn-print-invoice"><i class="fa-solid fa-print"></i> Print
+            Receipt</button>
+          <button type="button" class="modal-close-btn" id="close-invoice-modal">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body invoice-printable-area" id="invoice-content-area">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Popups -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+
+</html>
