@@ -284,20 +284,48 @@
 
         <!-- TAB 2: PRODUCTS CATALOGUE -->
         <div class="android-tab-view hidden" id="android-tab-products">
-          <div class="catalog-header-bar">
-            <!-- Filter Pills -->
-            <div class="android-filter-bar">
-              <button type="button" class="filter-pill active" data-filter="all">All (<span
-                  id="android-product-count">35</span>)</button>
-              <button type="button" class="filter-pill" data-filter="in-stock">In Stock ⚡</button>
-              <button type="button" class="filter-pill" data-filter="under-250">Under ₹250</button>
-              <button type="button" class="filter-pill" data-filter="pure-ghee">Pure Ghee</button>
-              <button type="button" class="filter-pill" data-filter="wholesale">Wholesale Bulk 📦</button>
-            </div>
 
-            <!-- Category Sub-tabs -->
-            <div class="android-subcat-tabs" id="android-cat-filter-tabs">
-              <!-- Dynamically populated via JS -->
+          <!-- Page Header: Title + Filter & Sort buttons on the right -->
+          <div class="catalog-page-header">
+            <div class="catalog-page-title-wrap">
+              <h2 id="catalog-category-heading">Discover our Specialties</h2>
+              <span class="catalog-items-sub" id="catalog-items-count-label">35 Items</span>
+            </div>
+            <div class="catalog-header-actions">
+              <!-- Filter Button -->
+              <button type="button" class="catalog-action-btn" id="btn-open-filter-modal">
+                <i class="fa-solid fa-sliders"></i>
+                <span>Filter</span>
+                <span class="filter-active-dot hidden" id="filter-active-indicator"></span>
+              </button>
+              <!-- Sort Button with dropdown -->
+              <div class="catalog-sort-wrap" id="catalog-sort-wrap">
+                <button type="button" class="catalog-action-btn" id="btn-open-sort-panel">
+                  <i class="fa-solid fa-arrow-up-wide-short"></i>
+                  <span>Sort</span>
+                  <i class="fa-solid fa-chevron-down sort-chevron-sm" id="sort-chevron-icon"></i>
+                </button>
+                <div class="sort-panel hidden" id="sort-panel">
+                  <div class="sort-panel-inner">
+                    <div class="sort-panel-title">Sort By</div>
+                    <button type="button" class="sort-panel-option active" data-sort="popular">
+                      <span>Best Sellers</span><i class="fa-solid fa-check sort-check-icon"></i>
+                    </button>
+                    <button type="button" class="sort-panel-option" data-sort="price-low">
+                      <span>Price: Low to High</span><i class="fa-solid fa-check sort-check-icon"></i>
+                    </button>
+                    <button type="button" class="sort-panel-option" data-sort="price-high">
+                      <span>Price: High to Low</span><i class="fa-solid fa-check sort-check-icon"></i>
+                    </button>
+                    <button type="button" class="sort-panel-option" data-sort="newest">
+                      <span>Newest First</span><i class="fa-solid fa-check sort-check-icon"></i>
+                    </button>
+                    <button type="button" class="sort-panel-option" data-sort="rating">
+                      <span>Top Rated</span><i class="fa-solid fa-check sort-check-icon"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -747,7 +775,63 @@
     </div>
   </div>
 
-  <!-- 5. GST TAX INVOICE & RECEIPT MODAL -->
+  <!-- 5. PRODUCTS FILTER MODAL -->
+  <div id="product-filter-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog filter-modal-card">
+      <div class="modal-header flex-between">
+        <div class="flex-align gap-2">
+          <i class="fa-solid fa-sliders" style="color:var(--primary)"></i>
+          <h4>Filter Products</h4>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-filter-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Section 1: Category -->
+        <div class="filter-modal-section mb-3">
+          <h5 class="filter-section-title">Category</h5>
+          <div class="filter-category-chips" id="filter-category-chips">
+            <button type="button" class="filter-cat-chip active" data-cat="all">All Items</button>
+            <button type="button" class="filter-cat-chip" data-cat="Sweets">Mithai</button>
+            <button type="button" class="filter-cat-chip" data-cat="Farsan">Farsan</button>
+            <button type="button" class="filter-cat-chip" data-cat="Dry Fruits">Dry Fruits</button>
+            <button type="button" class="filter-cat-chip" data-cat="Hampers">Hampers</button>
+            <button type="button" class="filter-cat-chip" data-cat="Khakhra">Khakhra</button>
+            <button type="button" class="filter-cat-chip" data-cat="Snacks">Morning Snacks</button>
+          </div>
+        </div>
+        <!-- Section 2: Dietary -->
+        <div class="filter-modal-section mb-3">
+          <h5 class="filter-section-title">Dietary & Purity</h5>
+          <div class="filter-toggles-list">
+            <label class="clean-checkbox-row">
+              <input type="checkbox" id="filter-modal-ghee">
+              <span>Pure Gir Cow Desi Ghee Only</span>
+            </label>
+            <label class="clean-checkbox-row">
+              <input type="checkbox" id="filter-modal-fresh">
+              <span>Fresh Morning Batch (6 AM)</span>
+            </label>
+          </div>
+        </div>
+        <!-- Section 3: Price Slabs -->
+        <div class="filter-modal-section">
+          <h5 class="filter-section-title">Maximum Price</h5>
+          <div class="filter-price-chips" id="filter-price-chips">
+            <button type="button" class="price-chip-btn active" data-price="2500">Any Price</button>
+            <button type="button" class="price-chip-btn" data-price="150">Under ₹150</button>
+            <button type="button" class="price-chip-btn" data-price="300">Under ₹300</button>
+            <button type="button" class="price-chip-btn" data-price="600">Under ₹600</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer flex-between">
+        <button type="button" class="btn-flow-action secondary" id="btn-reset-filters">Reset All</button>
+        <button type="button" class="btn-primary-sm" id="btn-apply-filters">Apply Filters</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. GST TAX INVOICE & RECEIPT MODAL -->
   <div id="invoice-modal" class="modal-backdrop hidden">
     <div class="modal-dialog invoice-modal-card">
       <div class="modal-header flex-between no-print">

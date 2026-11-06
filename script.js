@@ -1484,38 +1484,71 @@
     }
   }
 
-  function renderAndroidProducts(filter = 'all') {
+  function renderAndroidProducts(filter = 'all', sortMode = null) {
     const grid = document.getElementById('android-catalogue-grid');
     const countEl = document.getElementById('android-product-count');
     if (!grid) return;
 
-    let items = state.products;
-    if (filter === 'in-stock') items = items.filter(p => p.stockKg > p.thresholdKg);
-    else if (filter === 'under-250') items = items.filter(p => p.variants['250g'].price < 250);
-    else if (filter === 'pure-ghee') items = items.filter(p => p.isPureGhee);
-    else if (filter === 'wholesale') items = items.filter(p => p.wholesaleRatePerKg > 0);
-    else if (filter !== 'all') items = items.filter(p => p.category === filter);
+    // Remember current sort mode
+    if (sortMode !== null) state._catalogSort = sortMode;
+    const currentSort = state._catalogSort || 'popular';
 
+    // Remember current category filter
+    if (filter !== null) state._catalogFilter = filter;
+    const currentFilter = state._catalogFilter || 'all';
+
+    let items = [...state.products];
+
+    // Apply category / quick filters
+    if (currentFilter === 'in-stock') items = items.filter(p => p.stockKg > p.thresholdKg);
+    else if (currentFilter === 'under-250') items = items.filter(p => p.variants['250g'].price < 250);
+    else if (currentFilter === 'pure-ghee') items = items.filter(p => p.isPureGhee);
+    else if (currentFilter === 'wholesale') items = items.filter(p => p.wholesaleRatePerKg > 0);
+    else if (currentFilter !== 'all') items = items.filter(p => p.category === currentFilter);
+
+    // Apply active filter-modal price cap
+    const maxPrice = state._filterMaxPrice || 2500;
+    items = items.filter(p => p.variants['250g'].price <= maxPrice);
+    if (state._filterGhee) items = items.filter(p => p.isPureGhee);
+    if (state._filterFresh) items = items.filter(p => p.isFreshBatch);
+
+    // Apply sort
+    if (currentSort === 'price-low') items.sort((a, b) => a.variants['250g'].price - b.variants['250g'].price);
+    else if (currentSort === 'price-high') items.sort((a, b) => b.variants['250g'].price - a.variants['250g'].price);
+    else if (currentSort === 'rating') items.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
+    else if (currentSort === 'newest') items = items.slice().reverse();
+    // 'popular' — default seed order
+
+    // Update count
+    const countLabel = document.getElementById('catalog-items-count-label');
+    if (countLabel) countLabel.textContent = `${items.length} Items`;
     if (countEl) countEl.textContent = items.length;
+
+    // Update heading
+    const headingEl = document.getElementById('catalog-category-heading');
+    if (headingEl) {
+      if (currentFilter === 'all') headingEl.textContent = 'Discover our Specialties';
+      else {
+        const catName = state.categories.find(c => c.id === currentFilter)?.name;
+        headingEl.textContent = catName || 'Filtered Products';
+      }
+    }
+
+    // Update filter active button indicator
+    const filterBtn = document.getElementById('btn-open-filter-modal');
+    const filterDot = document.getElementById('filter-active-indicator');
+    const hasActiveFilter = state._filterGhee || state._filterFresh || (state._filterMaxPrice && state._filterMaxPrice < 2500) || (currentFilter !== 'all');
+    if (filterDot) filterDot.classList.toggle('hidden', !hasActiveFilter);
+    if (filterBtn) filterBtn.classList.toggle('active-filter', !!hasActiveFilter);
+
     grid.innerHTML = items.map(p => renderNeoProductCardHTML(p, 'android')).join('');
     attachProductCardEvents(grid, 'android');
+  }
 
-    // Subcategory pill row
-    const subcats = document.getElementById('android-cat-filter-tabs');
-    if (subcats) {
-      subcats.innerHTML = `
-        <button type="button" class="subcat-tab-btn ${filter === 'all' ? 'active' : ''}" data-cat="all">All (${state.products.length})</button>
-        ${state.categories.map(c => `
-          <button type="button" class="subcat-tab-btn ${filter === c.id ? 'active' : ''}" data-cat="${c.id}">${c.name}</button>
-        `).join('')}
-      `;
-      subcats.querySelectorAll('.subcat-tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const cat = btn.getAttribute('data-cat');
-          renderAndroidProducts(cat);
-        });
-      });
-    }
+  // Helper: used by home page craving circles
+  function filterAndroidProducts(categoryId) {
+    state._catalogFilter = categoryId;
+    renderAndroidProducts(categoryId);
   }
 
   function renderAndroidOrders() {
@@ -3439,6 +3472,102 @@
     document.getElementById('android-view-all-fresh')?.addEventListener('click', () => {
       switchAndroidTab('android-tab-products');
       renderAndroidProducts('in-stock');
+    });
+
+    // ----------------------------------------------------------------
+    // PRODUCTS PAGE — Sort Panel Toggle
+    // ----------------------------------------------------------------
+    const sortWrap = document.getElementById('catalog-sort-wrap');
+    const sortPanelEl = document.getElementById('sort-panel');
+    const sortChevron = document.getElementById('sort-chevron-icon');
+
+    document.getElementById('btn-open-sort-panel')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = sortPanelEl && !sortPanelEl.classList.contains('hidden');
+      if (sortPanelEl) sortPanelEl.classList.toggle('hidden');
+      if (sortChevron) sortChevron.classList.toggle('open', !isOpen);
+    });
+
+    document.querySelectorAll('.sort-panel-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.querySelectorAll('.sort-panel-option').forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+        const sortVal = opt.getAttribute('data-sort');
+        if (sortPanelEl) sortPanelEl.classList.add('hidden');
+        if (sortChevron) sortChevron.classList.remove('open');
+        renderAndroidProducts(state._catalogFilter || 'all', sortVal);
+        showToast(`Sorted by: ${opt.querySelector('span').textContent}`, 'info');
+      });
+    });
+
+    // Close sort panel when clicking outside
+    document.addEventListener('click', (e) => {
+      if (sortWrap && !sortWrap.contains(e.target)) {
+        if (sortPanelEl) sortPanelEl.classList.add('hidden');
+        if (sortChevron) sortChevron.classList.remove('open');
+      }
+    });
+
+    // ----------------------------------------------------------------
+    // PRODUCTS PAGE — Filter Modal
+    // ----------------------------------------------------------------
+    document.getElementById('btn-open-filter-modal')?.addEventListener('click', () => {
+      document.getElementById('product-filter-modal')?.classList.remove('hidden');
+    });
+
+    document.getElementById('close-filter-modal')?.addEventListener('click', () => {
+      document.getElementById('product-filter-modal')?.classList.add('hidden');
+    });
+
+    // Category chips inside filter modal
+    document.querySelectorAll('#filter-category-chips .filter-cat-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#filter-category-chips .filter-cat-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+
+    // Price slab chips
+    document.querySelectorAll('#filter-price-chips .price-chip-btn').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#filter-price-chips .price-chip-btn').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+
+    // Apply filters
+    document.getElementById('btn-apply-filters')?.addEventListener('click', () => {
+      const activeCatChip = document.querySelector('#filter-category-chips .filter-cat-chip.active');
+      const activePriceChip = document.querySelector('#filter-price-chips .price-chip-btn.active');
+      state._catalogFilter = activeCatChip ? activeCatChip.getAttribute('data-cat') : 'all';
+      state._filterMaxPrice = activePriceChip ? parseInt(activePriceChip.getAttribute('data-price'), 10) : 2500;
+      state._filterGhee = document.getElementById('filter-modal-ghee')?.checked || false;
+      state._filterFresh = document.getElementById('filter-modal-fresh')?.checked || false;
+      document.getElementById('product-filter-modal')?.classList.add('hidden');
+      renderAndroidProducts(state._catalogFilter);
+    });
+
+    // Reset filters
+    document.getElementById('btn-reset-filters')?.addEventListener('click', () => {
+      state._catalogFilter = 'all';
+      state._filterMaxPrice = 2500;
+      state._filterGhee = false;
+      state._filterFresh = false;
+      document.querySelectorAll('#filter-category-chips .filter-cat-chip').forEach((c, i) => c.classList.toggle('active', i === 0));
+      document.querySelectorAll('#filter-price-chips .price-chip-btn').forEach((c, i) => c.classList.toggle('active', i === 0));
+      const gheeChk = document.getElementById('filter-modal-ghee');
+      const freshChk = document.getElementById('filter-modal-fresh');
+      if (gheeChk) gheeChk.checked = false;
+      if (freshChk) freshChk.checked = false;
+      document.getElementById('product-filter-modal')?.classList.add('hidden');
+      renderAndroidProducts('all');
+    });
+
+    // Close filter modal on backdrop click
+    document.getElementById('product-filter-modal')?.addEventListener('click', (e) => {
+      if (e.target === document.getElementById('product-filter-modal')) {
+        document.getElementById('product-filter-modal')?.classList.add('hidden');
+      }
     });
   }
 
