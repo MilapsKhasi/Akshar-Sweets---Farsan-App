@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Products | Akshar Sweets & Farsan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/products.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a href="../index.html" class="brand">
+        <span class="brand-symbol">A</span>
+        <span class="brand-name">AKSHAR SWEETS<small>FARSAN & MITHAI</small></span>
+      </a>
+      <div class="sidebar-section">
+        <span class="sidebar-label">SHOP</span>
+        <nav class="sidebar-nav">
+          <a href="../index.html" class="nav-item"><span class="nav-icon">⌂</span>Home</a>
+          <a href="categories.html" class="nav-item"><span class="nav-icon">▦</span>Categories</a>
+          <a href="search.html" class="nav-item"><span class="nav-icon">⌕</span>Search</a>
+          <a href="products.html" class="nav-item active"><span class="nav-icon">▤</span>Products</a>
+          <a href="my-cart.html" class="nav-item"><span class="nav-icon">♧</span>My Cart <span class="nav-count" id="sidebarCartCount">0</span></a>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-promo">
+          <span class="promo-star">✳</span>
+          <strong>A little joy, delivered.</strong>
+          <p>Freshly prepared favourites, made for sharing.</p>
+        </div>
+        <a href="#" class="account-link"><span>◉</span> My Account</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <a href="../index.html" class="brand mobile-brand">
+          <span class="brand-symbol">A</span>
+          <span class="brand-name">AKSHAR SWEETS<small>FARSAN & MITHAI</small></span>
+        </a>
+        <div class="topbar-location">
+          <span class="location-pin">⌖</span>
+          <span><strong>Deliver to</strong><b>Ahmedabad 380015</b></span>
+          <span class="location-arrow">⌄</span>
+        </div>
+        <div class="topbar-spacer"></div>
+        <span class="delivery-time">⚡ 30 min</span>
+        <button class="topbar-icon notification-button" aria-label="Notifications">♧<i></i></button>
+        <button class="profile-button" aria-label="Profile">A</button>
+      </header>
+
+      <div class="products-page">
+        <div class="products-breadcrumb"><a href="../index.html">Home</a><span>›</span><strong>Products</strong></div>
+
+        <section class="products-intro">
+          <div>
+            <span class="section-kicker">MADE FOR YOUR CRAVINGS</span>
+            <h1>Our <em>products.</em></h1>
+            <p>Explore the flavours you love, freshly prepared and ready to enjoy.</p>
+          </div>
+          <div class="products-total"><strong id="productTotal">16</strong><span>products<br>available</span></div>
+        </section>
+
+        <section class="products-toolbar">
+          <div class="products-search">
+            <span>⌕</span>
+            <input type="search" id="productSearch" placeholder="Search sweets, farsan and more...">
+            <kbd>/</kbd>
+          </div>
+          <label class="sort-control">
+            <span>Sort by</span>
+            <select id="productSort">
+              <option value="featured">Featured</option>
+              <option value="low">Price: Low to high</option>
+              <option value="high">Price: High to low</option>
+              <option value="az">Name: A to Z</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="products-content">
+          <div class="products-heading">
+            <div>
+              <span class="section-kicker">THE STORE COLLECTION</span>
+              <h2>All products <span id="resultCount">(16)</span></h2>
+            </div>
+            <span class="fresh-note"><i></i> Prepared with care</span>
+          </div>
+
+          <div class="product-filters" id="productFilters">
+            <button class="product-filter active" data-filter="all">All products</button>
+            <button class="product-filter" data-filter="farsan">Farsan</button>
+            <button class="product-filter" data-filter="mithai">Mithai</button>
+            <button class="product-filter" data-filter="snacks">Snacks</button>
+          </div>
+
+          <div class="products-grid" id="productsGrid"></div>
+
+          <div class="products-empty" id="productsEmpty" hidden>
+            <span>⌕</span>
+            <strong>No products found</strong>
+            <p>Try a different name or category.</p>
+            <button id="clearProducts">Clear filters</button>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>© 2026 Akshar Sweets & Farsan</span>
+          <span>Made with care in Ahmedabad.</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a href="../index.html" class="bottom-item"><span>⌂</span><small>Home</small></a>
+    <a href="categories.html" class="bottom-item"><span>▦</span><small>Categories</small></a>
+    <a href="search.html" class="bottom-item"><span>⌕</span><small>Search</small></a>
+    <a href="products.html" class="bottom-item active"><span>▤</span><small>Products</small></a>
+    <a href="my-cart.html" class="bottom-item cart-nav-item"><span>♧<i id="bottomCartCount">0</i></span><small>Cart</small></a>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+  <script src="../js/products.js"></script>
+</body>
+</html>
