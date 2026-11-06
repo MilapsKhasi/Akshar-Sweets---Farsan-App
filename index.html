@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Akshar Sweets & Farsan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a href="#" class="brand">
+        <span class="brand-symbol">A</span>
+        <span class="brand-name">AKSHAR SWEETS<small>FARSAN & MITHAI</small></span>
+      </a>
+      <div class="sidebar-section">
+        <span class="sidebar-label">SHOP</span>
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active"><span class="nav-icon">⌂</span>Home</a>
+          <a href="#" class="nav-item"><span class="nav-icon">▦</span>Categories</a>
+          <a href="#" class="nav-item"><span class="nav-icon">⌕</span>Search</a>
+          <a href="#" class="nav-item"><span class="nav-icon">▤</span>Products</a>
+          <a href="#" class="nav-item"><span class="nav-icon">♧</span>My Cart <span class="nav-count" id="sidebarCartCount">0</span></a>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-promo">
+          <span class="promo-star">✳</span>
+          <strong>A little joy, delivered.</strong>
+          <p>Freshly prepared favourites, made for sharing.</p>
+        </div>
+        <a href="#" class="account-link"><span>◉</span> My Account</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <a href="#" class="brand mobile-brand">
+          <span class="brand-symbol">A</span>
+          <span class="brand-name">AKSHAR SWEETS<small>FARSAN & MITHAI</small></span>
+        </a>
+        <div class="topbar-location">
+          <span class="location-pin">⌖</span>
+          <span><strong>Deliver to</strong><b>Ahmedabad 380015</b></span>
+          <span class="location-arrow">⌄</span>
+        </div>
+        <div class="topbar-spacer"></div>
+        <span class="delivery-time">⚡ 30 min</span>
+        <button class="topbar-icon notification-button" aria-label="Notifications">♧<i></i></button>
+        <button class="profile-button" aria-label="Profile">A</button>
+      </header>
+
+      <div class="home-container">
+        <div class="offer-strip">
+          <span class="offer-icon">✳</span>
+          <p><strong>Festive Deal:</strong> Flat 20% off on Kaju Katli & Gift Hampers</p>
+          <span class="offer-code">FESTIVE20</span>
+        </div>
+
+        <section class="welcome-section">
+          <div>
+            <span class="section-kicker">MADE FRESH, MADE WITH CARE</span>
+            <h1>Good food brings<br><em>everyone together.</em></h1>
+            <p>Discover the flavours you grew up with, freshly prepared for every occasion.</p>
+          </div>
+          <div class="welcome-mark">અ</div>
+        </section>
+
+        <form class="search-bar" id="homeSearch">
+          <span class="search-icon">⌕</span>
+          <input id="searchInput" type="search" placeholder="Search Motichoor, Ratlami Sev, Kaju Katli...">
+          <button type="button" class="voice-button" aria-label="Voice search">♩</button>
+        </form>
+
+        <section class="categories-section">
+          <div class="section-heading">
+            <div><span class="section-kicker">FIND YOUR FAVOURITE</span><h2>Explore cravings <span class="heading-dot">•</span></h2></div>
+            <a href="#" class="section-link">All categories <span>›</span></a>
+          </div>
+          <div class="category-list">
+            <a href="#" class="category-item">
+              <span class="category-image category-sweets"><img src="https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=240&q=80" alt="Traditional sweets"></span>
+              <span class="category-title">Bestsellers</span>
+              <span class="category-subtitle">Most loved</span>
+            </a>
+            <a href="#" class="category-item">
+              <span class="category-image category-ghee"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=240&q=80" alt="Indian snacks"></span>
+              <span class="category-title">Pure Ghee</span>
+              <span class="category-subtitle">Rich & classic</span>
+            </a>
+            <a href="#" class="category-item">
+              <span class="category-image category-farsan"><img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=240&q=80" alt="Fresh farsan"></span>
+              <span class="category-title">Crispy Farsan</span>
+              <span class="category-subtitle">Fresh today</span>
+            </a>
+            <a href="#" class="category-item">
+              <span class="category-image category-gifts"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=240&q=80" alt="Gift selection"></span>
+              <span class="category-title">Gift Boxes</span>
+              <span class="category-subtitle">Made to gift</span>
+            </a>
+            <a href="#" class="category-item">
+              <span class="category-image category-sugar"><img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=240&q=80" alt="Indian food"></span>
+              <span class="category-title">Sugar Free</span>
+              <span class="category-subtitle">Lighter choices</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="festival-banner">
+          <div class="festival-content">
+            <span class="festival-tag">✳ GIFT WITH DESI GHEE</span>
+            <span class="festival-label">A FESTIVE FAVOURITE</span>
+            <h2>Grand Festive Mithai Box</h2>
+            <p>16 artisanal bites crafted fresh each dawn. Sealed for festive gifting.</p>
+            <div class="festival-price">
+              <div><small>FESTIVAL SPECIAL</small><strong>₹649 <del>₹799</del></strong></div>
+              <button class="festival-button" id="festivalOrder">♧ &nbsp; Order Fresh</button>
+            </div>
+          </div>
+          <div class="festival-image">
+            <img src="https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=700&q=85" alt="Festive Indian sweets assortment">
+          </div>
+          <span class="festival-decoration decoration-one"></span>
+          <span class="festival-decoration decoration-two"></span>
+        </section>
+
+        <section class="fresh-section">
+          <div class="section-heading fresh-heading">
+            <div><span class="section-kicker">STRAIGHT FROM OUR KITCHEN</span><h2>Today's fresh batch</h2><p>Prepared fresh in Ahmedabad kitchen.</p></div>
+            <a href="#" class="section-link">View all <span>›</span></a>
+          </div>
+          <div class="fresh-grid" id="freshProducts"></div>
+        </section>
+
+        <section class="promise-section">
+          <div class="promise-item"><span>✳</span><div><strong>Freshly prepared</strong><small>Made in small batches</small></div></div>
+          <div class="promise-item"><span>♧</span><div><strong>Quality ingredients</strong><small>Carefully selected</small></div></div>
+          <div class="promise-item"><span>⌖</span><div><strong>Local delivery</strong><small>Fresh to your doorstep</small></div></div>
+        </section>
+
+        <footer class="footer">
+          <span>© 2026 Akshar Sweets & Farsan</span>
+          <span>Made with care in Ahmedabad.</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a href="#" class="bottom-item active"><span>⌂</span><small>Home</small></a>
+    <a href="#" class="bottom-item"><span>▦</span><small>Categories</small></a>
+    <a href="#" class="bottom-item"><span>⌕</span><small>Search</small></a>
+    <a href="#" class="bottom-item"><span>▤</span><small>Products</small></a>
+    <a href="#" class="bottom-item cart-nav-item"><span>♧<i id="bottomCartCount">0</i></span><small>Cart</small></a>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
