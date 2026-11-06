@@ -1,21 +1,18 @@
 const products = [
-  { id: 1, name: "Nylon Khaman", category: "farsan", label: "POPULAR", weight: "250 g", price: 70, image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=85" },
+  { id: 1, name: "Nylon Khaman", category: "farsan", label: "POPULAR", weight: "250 g", price: 70, image: "/src/images/naylon-khaman.jpg" },
   { id: 2, name: "Ratlami Sev", category: "snacks", label: "SPICY", weight: "250 g", price: 85, image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=85" },
-  { id: 3, name: "Fafda", category: "farsan", label: "GUJARATI FAVOURITE", weight: "250 g", price: 90, image: "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=600&q=85" },
-  { id: 4, name: "Khandvi", category: "farsan", label: "FRESH", weight: "200 g", price: 80, image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=85" },
-  { id: 5, name: "Patra", category: "farsan", label: "TRADITIONAL", weight: "250 g", price: 75, image: "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=600&q=85" },
-  { id: 6, name: "Bhavnagari Gathiya", category: "snacks", label: "CLASSIC", weight: "250 g", price: 80, image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=85" },
-  { id: 7, name: "Methi Gota", category: "farsan", label: "TEA-TIME", weight: "250 g", price: 90, image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=85" },
-  { id: 8, name: "Dalwada", category: "farsan", label: "CRISPY", weight: "250 g", price: 85, image: "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=600&q=85" },
+  { id: 3, name: "Fafda", category: "farsan", label: "GUJARATI FAVOURITE", weight: "250 g", price: 90, image: "/src/images/fafda.jpeg" },
+  { id: 4, name: "Khandvi", category: "farsan", label: "FRESH", weight: "200 g", price: 80, image: "/src/images/khandvi.webp" },
   { id: 9, name: "Nylon Chivda", category: "snacks", label: "LIGHT & CRUNCHY", weight: "250 g", price: 75, image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=85" },
-  { id: 10, name: "Lilva Kachori", category: "farsan", label: "SEASONAL", weight: "4 pieces", price: 100, image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=85" },
+  { id: 10, name: "Kachori", category: "farsan", label: "SEASONAL", weight: "4 pieces", price: 100, image: "/src/images/kachori.jpg" },
   { id: 11, name: "Kaju Katli", category: "mithai", label: "BESTSELLER", weight: "250 g", price: 220, image: "https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=600&q=85" },
   { id: 12, name: "Mohanthal", category: "mithai", label: "TRADITIONAL", weight: "250 g", price: 160, image: "https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=600&q=85" },
   { id: 13, name: "Kesar Peda", category: "mithai", label: "RICH & CREAMY", weight: "250 g", price: 180, image: "https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=600&q=85" },
   { id: 14, name: "Motichoor Laddu", category: "mithai", label: "CELEBRATION", weight: "250 g", price: 150, image: "https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=600&q=85" },
   { id: 15, name: "Gulab Jamun", category: "mithai", label: "ALL-TIME FAVOURITE", weight: "500 g", price: 190, image: "https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=600&q=85" },
   { id: 16, name: "Rasmalai", category: "mithai", label: "SPECIAL", weight: "4 pieces", price: 200, image: "https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=600&q=85" }
-];
+]
+
 
 const grid = document.getElementById("productsGrid");
 const searchInput = document.getElementById("productSearch");
