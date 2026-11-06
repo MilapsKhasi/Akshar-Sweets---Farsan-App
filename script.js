@@ -97,14 +97,6 @@ document.querySelectorAll(".category-item").forEach(item => {
   });
 });
 
-document.querySelectorAll(".sidebar-nav .nav-item, .bottom-nav .bottom-item").forEach(item => {
-  item.addEventListener("click", event => {
-    event.preventDefault();
-    const label = item.textContent.trim().replace(/\d+/g, "").trim();
-    if (label !== "Home") showToast(`${label} page will be added next`);
-  });
-});
-
 document.querySelectorAll(".section-link").forEach(link => {
   link.addEventListener("click", event => {
     event.preventDefault();

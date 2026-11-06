@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Search | Akshar Sweets & Farsan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/search.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a href="../index.html" class="brand">
+        <span class="brand-symbol">A</span>
+        <span class="brand-name">AKSHAR SWEETS<small>FARSAN & MITHAI</small></span>
+      </a>
+      <div class="sidebar-section">
+        <span class="sidebar-label">SHOP</span>
+        <nav class="sidebar-nav">
+          <a href="../index.html" class="nav-item"><span class="nav-icon">⌂</span>Home</a>
+          <a href="/pages/categories.html" class="nav-item"><span class="nav-icon">▦</span>Categories</a>
+          <a href="/pages/search.html" class="nav-item active"><span class="nav-icon">⌕</span>Search</a>
+          <a href="products.html" class="nav-item"><span class="nav-icon">▤</span>Products</a>
+          <a href="my-cart.html" class="nav-item"><span class="nav-icon">♧</span>My Cart <span class="nav-count" id="sidebarCartCount">0</span></a>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-promo">
+          <span class="promo-star">✳</span>
+          <strong>A little joy, delivered.</strong>
+          <p>Freshly prepared favourites, made for sharing.</p>
+        </div>
+        <a href="#" class="account-link"><span>◉</span> My Account</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <a href="../index.html" class="brand mobile-brand">
+          <span class="brand-symbol">A</span>
+          <span class="brand-name">AKSHAR SWEETS<small>FARSAN & MITHAI</small></span>
+        </a>
+        <div class="topbar-location">
+          <span class="location-pin">⌖</span>
+          <span><strong>Deliver to</strong><b>Ahmedabad 380015</b></span>
+          <span class="location-arrow">⌄</span>
+        </div>
+        <div class="topbar-spacer"></div>
+        <span class="delivery-time">⚡ 30 min</span>
+        <button class="topbar-icon notification-button" aria-label="Notifications">♧<i></i></button>
+        <button class="profile-button" aria-label="Profile">A</button>
+      </header>
+
+      <div class="search-page">
+        <div class="search-breadcrumb"><a href="../index.html">Home</a><span>›</span><strong>Search</strong></div>
+
+        <section class="search-intro">
+          <span class="section-kicker">FIND SOMETHING DELICIOUS</span>
+          <h1>What are you <em>craving?</em></h1>
+          <p>Search your favourite sweets, snacks and freshly prepared treats.</p>
+        </section>
+
+        <section class="search-main">
+          <form class="main-search-box" id="productSearchForm">
+            <span class="main-search-icon">⌕</span>
+            <input type="search" id="productSearchInput" placeholder="Try “Kaju Katli” or “Ratlami Sev”..." autocomplete="off" aria-label="Search products">
+            <button type="button" id="clearSearch" class="clear-search" aria-label="Clear search" hidden>×</button>
+            <button type="submit" class="search-submit">Search</button>
+          </form>
+          <div class="search-hint"><span>↵</span> Press Enter to search <kbd>ESC</kbd> Clear search</div>
+        </section>
+
+        <section class="search-discovery" id="searchDiscovery">
+          <div class="discovery-grid">
+            <div class="discovery-panel recent-panel">
+              <div class="panel-heading">
+                <div><span class="section-kicker">PICK UP WHERE YOU LEFT OFF</span><h2>Recent searches</h2></div>
+                <button class="text-action" id="clearRecent">Clear all</button>
+              </div>
+              <div class="recent-list" id="recentSearches">
+                <button class="recent-item" data-query="Kaju Katli"><span>↺</span>Kaju Katli<small>›</small></button>
+                <button class="recent-item" data-query="Gathiya"><span>↺</span>Gathiya<small>›</small></button>
+                <button class="recent-item" data-query="Motichoor Laddu"><span>↺</span>Motichoor Laddu<small>›</small></button>
+              </div>
+            </div>
+
+            <div class="discovery-panel popular-panel">
+              <div class="panel-heading">
+                <div><span class="section-kicker">WHAT PEOPLE LOVE</span><h2>Popular searches</h2></div>
+                <span class="trending-label">TRENDING</span>
+              </div>
+              <div class="popular-tags">
+                <button data-query="Kaju Katli">Kaju Katli <span>↗</span></button>
+                <button data-query="Ratlami Sev">Ratlami Sev <span>↗</span></button>
+                <button data-query="Fafda">Fafda <span>↗</span></button>
+                <button data-query="Mohanthal">Mohanthal <span>↗</span></button>
+                <button data-query="Khandvi">Khandvi <span>↗</span></button>
+                <button data-query="Gulab Jamun">Gulab Jamun <span>↗</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-categories">
+            <div class="panel-heading">
+              <div><span class="section-kicker">BROWSE BY TYPE</span><h2>Explore categories</h2></div>
+              <a href="categories.html" class="text-action">View all <span>›</span></a>
+            </div>
+            <div class="quick-category-list">
+              <a href="products.html?category=mithai" class="quick-category">
+                <span class="quick-category-icon mithai-icon">✳</span>
+                <span><strong>Mithai</strong><small>Traditional sweets</small></span>
+                <b>↗</b>
+              </a>
+              <a href="products.html?category=farsan" class="quick-category">
+                <span class="quick-category-icon farsan-icon">❖</span>
+                <span><strong>Farsan</strong><small>Gujarati favourites</small></span>
+                <b>↗</b>
+              </a>
+              <a href="products.html?category=namkeen" class="quick-category">
+                <span class="quick-category-icon namkeen-icon">✣</span>
+                <span><strong>Namkeen</strong><small>Crunchy snacks</small></span>
+                <b>↗</b>
+              </a>
+              <a href="products.html?category=gift-boxes" class="quick-category">
+                <span class="quick-category-icon gift-icon">▧</span>
+                <span><strong>Gift Boxes</strong><small>Made to gift</small></span>
+                <b>↗</b>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="search-results" id="searchResults" hidden>
+          <div class="results-heading">
+            <div><span class="section-kicker">YOUR SEARCH RESULTS</span><h2 id="resultsTitle">Results</h2><p id="resultsDescription">Products matching your search</p></div>
+            <span class="results-count" id="resultsCount"></span>
+          </div>
+          <div class="results-grid" id="resultsGrid"></div>
+          <div class="no-results" id="noResults" hidden>
+            <span class="no-results-icon">⌕</span>
+            <h3>No products found</h3>
+            <p>We couldn't find anything matching that search. Try a different name or browse our categories.</p>
+            <button id="backToDiscovery">Explore categories</button>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>© 2026 Akshar Sweets & Farsan</span>
+          <span>Made with care in Ahmedabad.</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a href="../index.html" class="bottom-item"><span>⌂</span><small>Home</small></a>
+    <a href="/pages/categories.html" class="bottom-item"><span>▦</span><small>Categories</small></a>
+    <a href="/pages/search.html" class="bottom-item active"><span>⌕</span><small>Search</small></a>
+    <a href="products.html" class="bottom-item"><span>▤</span><small>Products</small></a>
+    <a href="my-cart.html" class="bottom-item cart-nav-item"><span>♧<i id="bottomCartCount">0</i></span><small>Cart</small></a>
+  </nav>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="../js/search.js"></script>
+</body>
+</html>

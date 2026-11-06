@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Categories | Akshar Sweets & Farsan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/categories.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a href="../index.html" class="brand">
+        <span class="brand-symbol">A</span>
+        <span class="brand-name">AKSHAR SWEETS<small>FARSAN & MITHAI</small></span>
+      </a>
+      <div class="sidebar-section">
+        <span class="sidebar-label">SHOP</span>
+        <nav class="sidebar-nav">
+          <a href="../index.html" class="nav-item"><span class="nav-icon">⌂</span>Home</a>
+          <a href="/pages/categories.html" class="nav-item active"><span class="nav-icon">▦</span>Categories</a>
+          <a href="/pages/search.html" class="nav-item"><span class="nav-icon">⌕</span>Search</a>
+          <a href="products.html" class="nav-item"><span class="nav-icon">▤</span>Products</a>
+          <a href="my-cart.html" class="nav-item"><span class="nav-icon">♧</span>My Cart <span class="nav-count" id="sidebarCartCount">0</span></a>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-promo">
+          <span class="promo-star">✳</span>
+          <strong>A little joy, delivered.</strong>
+          <p>Freshly prepared favourites, made for sharing.</p>
+        </div>
+        <a href="#" class="account-link"><span>◉</span> My Account</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <a href="../index.html" class="brand mobile-brand">
+          <span class="brand-symbol">A</span>
+          <span class="brand-name">AKSHAR SWEETS<small>FARSAN & MITHAI</small></span>
+        </a>
+        <div class="topbar-location">
+          <span class="location-pin">⌖</span>
+          <span><strong>Deliver to</strong><b>Ahmedabad 380015</b></span>
+          <span class="location-arrow">⌄</span>
+        </div>
+        <div class="topbar-spacer"></div>
+        <span class="delivery-time">⚡ 30 min</span>
+        <button class="topbar-icon notification-button" aria-label="Notifications">♧<i></i></button>
+        <button class="profile-button" aria-label="Profile">A</button>
+      </header>
+
+      <div class="categories-page">
+        <div class="categories-breadcrumb"><a href="../index.html">Home</a><span>›</span><strong>Categories</strong></div>
+
+        <section class="categories-intro">
+          <div>
+            <span class="section-kicker">A WORLD OF INDIAN FLAVOURS</span>
+            <h1>Browse <em>categories.</em></h1>
+            <p>From traditional mithai to crispy farsan, find something made for every craving.</p>
+          </div>
+          <div class="intro-count"><strong>08</strong><span>Collections<br>to explore</span></div>
+        </section>
+
+        <section class="category-tools">
+          <div class="category-search">
+            <span>⌕</span>
+            <input type="search" id="categorySearch" placeholder="Find a category...">
+            <kbd>/</kbd>
+          </div>
+          <div class="category-filters" id="categoryFilters">
+            <button class="filter-chip active" data-filter="all">All categories <span>8</span></button>
+            <button class="filter-chip" data-filter="mithai">Traditional Mithai</button>
+            <button class="filter-chip" data-filter="farsan">Farsan & Snacks</button>
+            <button class="filter-chip" data-filter="special">Special collections</button>
+          </div>
+        </section>
+
+        <section class="category-featured">
+          <div class="section-heading">
+            <div><span class="section-kicker">CURATED FOR YOU</span><h2>Explore our collections</h2></div>
+            <span class="collection-note">Fresh choices, every day</span>
+          </div>
+          <div class="category-grid" id="categoryGrid">
+            <a href="products.html?category=mithai" class="category-card" data-category="mithai" data-name="royal mithai sweets">
+              <div class="category-card-image">
+                <img src="https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=800&q=85" alt="Traditional Indian mithai" loading="lazy">
+                <span class="category-count">24 varieties</span>
+              </div>
+              <div class="category-card-body">
+                <div><span class="category-eyebrow">TRADITIONAL FAVOURITES</span><h3>Royal Mithai & Sweets</h3><p>Rich, handcrafted mithai made for celebrations and everyday moments.</p></div>
+                <span class="category-arrow">↗</span>
+              </div>
+              <div class="category-tags"><span>Kaju Katli</span><span>Motichoor Laddu</span><span>Mohanthal</span></div>
+            </a>
+
+            <a href="products.html?category=farsan" class="category-card" data-category="farsan" data-name="authentic gujarati farsan">
+              <div class="category-card-image">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=85" alt="Gujarati farsan and snacks" loading="lazy">
+                <span class="category-count">18 varieties</span>
+              </div>
+              <div class="category-card-body">
+                <div><span class="category-eyebrow">GUJARATI CLASSICS</span><h3>Authentic Gujarati Farsan</h3><p>Traditional savoury favourites with the taste of home in every bite.</p></div>
+                <span class="category-arrow">↗</span>
+              </div>
+              <div class="category-tags"><span>Bhavnagari Gathiya</span><span>Fafda</span><span>Khandvi</span></div>
+            </a>
+
+            <a href="products.html?category=namkeen" class="category-card" data-category="farsan" data-name="crispy namkeen mixture">
+              <div class="category-card-image">
+                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=85" alt="Namkeen and savoury mixture" loading="lazy">
+                <span class="category-count">16 varieties</span>
+              </div>
+              <div class="category-card-body">
+                <div><span class="category-eyebrow">CRUNCH IN EVERY BITE</span><h3>Crispy Namkeen & Mixture</h3><p>Classic crunchy snacks, perfectly seasoned for your tea-time breaks.</p></div>
+                <span class="category-arrow">↗</span>
+              </div>
+              <div class="category-tags"><span>Ratlami Sev</span><span>Chivda</span><span>Masala Sev</span></div>
+            </a>
+
+            <a href="products.html?category=gift-boxes" class="category-card" data-category="special" data-name="festive hampers gift boxes">
+              <div class="category-card-image">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85" alt="Festive gift assortment" loading="lazy">
+                <span class="category-count">12 collections</span>
+              </div>
+              <div class="category-card-body">
+                <div><span class="category-eyebrow">GIFT SOMETHING SPECIAL</span><h3>Festive Hampers & Tin Boxes</h3><p>Thoughtfully packed selections for festivals, family and special occasions.</p></div>
+                <span class="category-arrow">↗</span>
+              </div>
+              <div class="category-tags"><span>Diwali Hampers</span><span>Gift Boxes</span><span>Celebration Tins</span></div>
+            </a>
+
+            <a href="products.html?category=dry-fruits" class="category-card" data-category="special" data-name="dry fruits roasted seeds">
+              <div class="category-card-image">
+                <img src="https://images.unsplash.com/photo-1608797178974-15b35a64ede9?auto=format&fit=crop&w=800&q=85" alt="Dry fruits and nuts" loading="lazy">
+                <span class="category-count">10 varieties</span>
+              </div>
+              <div class="category-card-body">
+                <div><span class="category-eyebrow">EVERYDAY GOODNESS</span><h3>Dry Fruits & Roasted Seeds</h3><p>A carefully selected range of nuts, seeds and roasted favourites.</p></div>
+                <span class="category-arrow">↗</span>
+              </div>
+              <div class="category-tags"><span>Roasted Almonds</span><span>Cashews</span><span>Seed Mix</span></div>
+            </a>
+
+            <a href="products.html?category=diet" class="category-card" data-category="special" data-name="diet sugar free delights">
+              <div class="category-card-image">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=85" alt="Light dessert selection" loading="lazy">
+                <span class="category-count">08 varieties</span>
+              </div>
+              <div class="category-card-body">
+                <div><span class="category-eyebrow">A DIFFERENT KIND OF TREAT</span><h3>Diet & Sugar-Free Delights</h3><p>Explore selected lighter alternatives for a different kind of indulgence.</p></div>
+                <span class="category-arrow">↗</span>
+              </div>
+              <div class="category-tags"><span>Sugar-Free Mithai</span><span>Light Snacks</span></div>
+            </a>
+
+            <a href="products.html?category=regional" class="category-card" data-category="farsan" data-name="syrup bengali delicacies">
+              <div class="category-card-image">
+                <img src="https://images.unsplash.com/photo-1551024506-0ad9a5c4b6a9?auto=format&fit=crop&w=800&q=85" alt="Traditional dessert selection" loading="lazy">
+                <span class="category-count">14 varieties</span>
+              </div>
+              <div class="category-card-body">
+                <div><span class="category-eyebrow">SWEET TRADITIONS</span><h3>Syrup & Bengali Delicacies</h3><p>Soft, syrupy classics and regional sweets for those special cravings.</p></div>
+                <span class="category-arrow">↗</span>
+              </div>
+              <div class="category-tags"><span>Gulab Jamun</span><span>Rasgulla</span><span>Rasmalai</span></div>
+            </a>
+
+            <a href="products.html?category=pickles" class="category-card" data-category="farsan" data-name="pickles chutneys spices">
+              <div class="category-card-image">
+                <img src="https://images.unsplash.com/photo-1472476443507-c7a5948772fc?auto=format&fit=crop&w=800&q=85" alt="Indian condiments and spices" loading="lazy">
+                <span class="category-count">09 varieties</span>
+              </div>
+              <div class="category-card-body">
+                <div><span class="category-eyebrow">ADD A LITTLE EXTRA</span><h3>Pickles, Chutneys & Spices</h3><p>Bold accompaniments and flavourful additions to complete your meal.</p></div>
+                <span class="category-arrow">↗</span>
+              </div>
+              <div class="category-tags"><span>Mango Pickle</span><span>Chutneys</span><span>Masala</span></div>
+            </a>
+          </div>
+          <div class="empty-state" id="emptyState" hidden>
+            <span>⌕</span>
+            <strong>No categories found</strong>
+            <p>Try another search or select a different filter.</p>
+            <button id="resetFilters">Clear filters</button>
+          </div>
+        </section>
+
+        <section class="bulk-banner">
+          <div class="bulk-icon">✳</div>
+          <div class="bulk-copy">
+            <span class="section-kicker">FOR EVERY BIG CELEBRATION</span>
+            <h2>Corporate Gifting & Bulk Orders</h2>
+            <p>Planning a family gathering, festive gift or business celebration? Let us help you make it memorable.</p>
+          </div>
+          <div class="bulk-actions">
+            <a href="https://wa.me/" class="bulk-primary" target="_blank" rel="noopener">Enquire on WhatsApp ↗</a>
+            <a href="tel:" class="bulk-secondary">Call our store</a>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>© 2026 Akshar Sweets & Farsan</span>
+          <span>Made with care in Ahmedabad.</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a href="../index.html" class="bottom-item"><span>⌂</span><small>Home</small></a>
+    <a href="/pages/categories.html" class="bottom-item active"><span>▦</span><small>Categories</small></a>
+    <a href="/pages/search.html" class="bottom-item"><span>⌕</span><small>Search</small></a>
+    <a href="products.html" class="bottom-item"><span>▤</span><small>Products</small></a>
+    <a href="my-cart.html" class="bottom-item cart-nav-item"><span>♧<i id="bottomCartCount">0</i></span><small>Cart</small></a>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+  <script src="../script.js"></script>
+  <script src="../js/categories.js"></script>
+</body>
+</html>
