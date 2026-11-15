@@ -9,11 +9,11 @@ const freshProducts = [
     rating: "4.9",
     reviews: "124",
     badge: "BESTSELLER",
-    image: "https://images.unsplash.com/photo-1605197584541-2f0568f70950?auto=format&fit=crop&w=600&q=85"
+    image: "/src/images/kaju-katli.jpg"
   },
   {
     id: 2,
-    name: "Special Bhavnagari Gathiya",
+    name: "Ratlami Sev",
     category: "Farsan",
     description: "Mildly spiced, freshly prepared.",
     price: 170,
@@ -21,7 +21,7 @@ const freshProducts = [
     rating: "4.8",
     reviews: "86",
     badge: "FRESH TODAY",
-    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=85"
+    image: "/src/images/ratlami-sev.jpg"
   }
 ];
 
